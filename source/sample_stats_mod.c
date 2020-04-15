@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define MS2GENO  "\nms2geno: Convert ms to genotype file" \
-"\nversion 20200413"
+"\nversion 20200415"
 
 long int maxsites = 1000000 ;
 
@@ -69,6 +69,10 @@ int main(int argc, char *argv[])
     list = cmatrix(nsam,maxsites+1);
     posit = (double *)malloc( maxsites*sizeof( double ) ) ;
 
+    printf("Chr Pos ");
+    for( i = 0; i < nsam/2; i++ ) printf("IND%ld ",i+1);
+    printf("\n");
+    
     count=0;
     probflag = 0 ;
     while( howmany-count++ ) {
@@ -99,20 +103,16 @@ int main(int argc, char *argv[])
             for( i=0; i<nsam;i++) fscanf(pfin," %s", list[i] );
         }
         
-        printf("Chr Pos ");
-        for( i = 0; i < nsam/2; i++ ) printf("IND%ld ",i+1);
-        printf("\n");
-            
         for( site = 0; site < segsites; site++ ) {
-            printf("0 %.0f ",(posit[site]*chrom_size));
+            printf("%ld %.0f ",count,(posit[site]*chrom_size));
             for( i = 0; i < nsam; i += 2 ) {
                 nalleles = (list[i][site]-48) + (list[i+1][site]-48);
                 printf("%d ",nalleles);
             }
             printf("\n");
         }
-        printf("\n");
     }
+    printf("\n");
 }
 
 /* allocates space for gametes (character strings) */
