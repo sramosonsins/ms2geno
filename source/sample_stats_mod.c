@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define MS2GENO  "\nms2geno: Convert ms to genotype file" \
-"\nversion 20200415"
+"\nversion 20200615"
 
 long int maxsites = 1000000 ;
 

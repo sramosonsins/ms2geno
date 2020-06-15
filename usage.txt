@@ -1,0 +1,6 @@
+ms2geno: Convert ms to genotype file
+version 20200615
+
+Usage:
+ms2geno [chrom length] [nsam (2xind)] [iterations] [name_file OR stdin]
+Results to stdout
